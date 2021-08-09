@@ -1,8 +1,10 @@
 import React, { useState, useRef } from "react";
 
 import "./App.css";
+import Header from "./components/Header";
 import TaskList from "./components/TaskList";
 import TaskInput from "./components/TaskInput";
+import Footer from "./components/Footer";
 
 function App() {
 	// const [taskList, setTaskList] = useState([])
@@ -57,32 +59,21 @@ function App() {
 
 	return (
 		<div className='App'>
-			<header>
-				<h1>To Do App</h1>
-			</header>
+			<Header />
 			<main>
 				<p>
 					Tasks to do: {tasksToDo}
 					<br />
 					{percentDone}% Done
 				</p>
-				<TaskInput newTask={newTask} submitHandler={submitHandler} />
 				<TaskList
 					taskList={taskList}
 					checkHandler={checkHandler}
 					deleteHandler={deleteHandler}
 				/>
+				<TaskInput newTask={newTask} submitHandler={submitHandler} />
 			</main>
-			<footer>
-				<div>
-					<a href='//github.com/laurielim/REACT21K_REACT_JS_TODO_APP'>
-						Github Repo
-					</a>
-				</div>
-				<div>
-					2021 © <a href='//laurielim.github.io/'>Laurie Lim Sam</a>
-				</div>
-			</footer>
+			<Footer />
 		</div>
 	);
 }
