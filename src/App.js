@@ -49,12 +49,23 @@ function App() {
 	const deleteHandler = (deletedTask) =>
 		setTaskList(taskList.filter((task) => task.id !== deletedTask.id));
 
+	const tasksToDo = taskList.filter((task) => !task.isDone).length;
+	const percentDone = (
+		((taskList.length - tasksToDo) / taskList.length) *
+		100
+	).toFixed(2);
+
 	return (
 		<div className='App'>
 			<header>
 				<h1>To Do App</h1>
 			</header>
 			<main>
+				<p>
+					Tasks to do: {tasksToDo}
+					<br />
+					{percentDone}% Done
+				</p>
 				<TaskInput newTask={newTask} submitHandler={submitHandler} />
 				<TaskList
 					taskList={taskList}
