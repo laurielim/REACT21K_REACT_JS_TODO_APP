@@ -1,13 +1,184 @@
+:root {
+	--color-mode: "light";
+	--color-dark: #211e1c;
+	--color-light: #f8f6f1;
+	--background: #f8f6f1;
+	--text-color: #211e1c;
+	--accent-color-light: #a00000;
+	--accent-color-dark: #e3b74f;
+	--accent-color: var(--accent-color-light);
+}
+
 * {
-	margin: 0;
-	padding: 0;
 	box-sizing: border-box;
 }
 
+html {
+	font-size: 22px;
+}
+
 body {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-		"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-		sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
+	background-color: #f8f6f1;
+	background-color: var(--background);
+	color: #211e1c;
+	color: var(--text-color);
+	font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui,
+		helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif;
+	transition: background-color 500ms ease-in-out, color 200ms ease;
+}
+
+.page-wrapper {
+	margin: 0 auto;
+	max-width: 960px;
+	width: 100%;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		--color-mode: "dark";
+	}
+
+	:root:not([data-user-color-scheme]) {
+		--background: var(--color-dark);
+		--text-color: var(--color-light);
+		--accent-color: var(--accent-color-dark);
+		--banner-image-source: var(--banner-image-dark);
+	}
+}
+
+[data-user-color-scheme="dark"] {
+	--background: var(--color-dark);
+	--text-color: var(--color-light);
+	--accent-color: var(--accent-color-dark);
+	--banner-image-source: var(--banner-image-dark);
+}
+
+/* Remove _all_ animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+	body {
+		scroll-behavior: auto;
+	}
+
+	* {
+		-webkit-animation: none !important;
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+.visually-hidden:not(:focus):not(:active) {
+	clip: rect(0 0 0 0);
+	-webkit-clip-path: inset(50%);
+	clip-path: inset(50%);
+	height: 1px;
+	overflow: hidden;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+:focus-visible {
+	outline: 3px dashed;
+	outline-offset: 2px;
+}
+
+ul {
+	list-style: none;
+	padding: 0;
+}
+
+li,
+a,
+p {
+	line-height: 1.5;
+}
+
+h1,
+.hightlight,
+a {
+	color: #a00000;
+	color: var(--accent-color);
+}
+
+.nav-link {
+	color: var(--text-color);
+}
+
+button {
+	font-family: inherit;
+	cursor: pointer;
+}
+
+.flex {
+	display: flex;
+	justify-content: space-between;
+}
+
+/******************** Main ********************/
+main {
+	padding-bottom: 2.5rem; /* Footer height */
+}
+
+main * + * {
+	margin-top: 1rem;
+}
+
+.task-container {
+	background-color: #303030;
+	margin-top: 0.2rem;
+	padding: 0.2rem 0.5rem;
+	position: relative;
+}
+
+input[type="checkbox"] {
+	display: none;
+}
+
+.task {
+	width: 100%;
+}
+
+.task::before {
+	content: "";
+	display: block;
+	position: absolute;
+	width: 90%;
+	height: 80%;
+}
+
+.task-done {
+	color: #aaa;
+	text-decoration: line-through;
+}
+
+.task-btn-delete {
+	margin-top: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 0.5rem;
+}
+/******************** Footer ********************/
+
+footer {
+	bottom: 0;
+	display: flex;
+	flex-wrap: wrap;
+	height: 1.5rem; /* Footer height */
+	justify-content: center;
+	margin-bottom: 1rem;
+	position: absolute;
+	max-width: 960px;
+	width: 98%;
+}
+
+footer div:first-child {
+	padding-right: 0.8rem;
+	border-right: 3px solid;
+	margin-bottom: 0;
+}
+
+footer div:last-child {
+	padding-left: 1rem;
+	margin-bottom: 0;
 }

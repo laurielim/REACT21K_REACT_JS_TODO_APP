@@ -2,8 +2,10 @@ import React from "react";
 
 const Task = ({ task, checkHandler, deleteHandler }) => {
 	const taskId = `taskCheck_${task.id}`;
+	const ariaLabel = `Delete task ${task.name}`;
+	const labelCSS = task.isDone ? "task task-done" : "task";
 	return (
-		<li>
+		<li className='task-container'>
 			<input
 				type='checkbox'
 				name={taskId}
@@ -11,8 +13,16 @@ const Task = ({ task, checkHandler, deleteHandler }) => {
 				checked={task.isDone}
 				onChange={() => checkHandler(task)}
 			/>
-			<label htmlFor={taskId}>{task.name}</label>
-			<button onClick={() => deleteHandler(task)}>Delete</button>
+			<label className={labelCSS} htmlFor={taskId}>
+				{task.name}
+			</label>
+			<button
+				className='task-btn-delete'
+				aria-label={ariaLabel}
+				onClick={() => deleteHandler(task)}
+			>
+				Delete
+			</button>
 		</li>
 	);
 };

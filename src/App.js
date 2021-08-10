@@ -58,14 +58,9 @@ function App() {
 	).toFixed(2);
 
 	return (
-		<div className='App'>
-			<Header />
+		<div className='page-wrapper'>
+			<Header todo={tasksToDo} done={percentDone} />
 			<main>
-				<p>
-					Tasks to do: {tasksToDo}
-					<br />
-					{percentDone}% Done
-				</p>
 				<TaskList
 					taskList={taskList}
 					checkHandler={checkHandler}
