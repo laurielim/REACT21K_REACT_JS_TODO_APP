@@ -19,4 +19,8 @@ const deleteTask = (id) => {
 	return axios.delete(`${baseUrl}/${id}`);
 };
 
-export { getAllTasks, addTask, deleteTask };
+const updateTask = (id, update) => {
+	return axios.put(`${baseUrl}/${id}`, update).then((res) => res.data);
+};
+
+export { getAllTasks, addTask, deleteTask, updateTask };

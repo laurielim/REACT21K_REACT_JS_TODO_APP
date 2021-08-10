@@ -2,7 +2,12 @@ import React, { useState, useRef, useEffect } from "react";
 
 import "./App.css";
 
-import { getAllTasks, addTask, deleteTask } from "./services/taskService";
+import {
+	getAllTasks,
+	addTask,
+	deleteTask,
+	updateTask,
+} from "./services/taskService";
 
 import Header from "./components/Header";
 import TaskList from "./components/TaskList";
@@ -40,9 +45,13 @@ function App() {
 	const checkboxHandler = (task) => {
 		const updatedTask = { ...task };
 		updatedTask.isDone = updatedTask.isDone ? false : true;
-		setTaskList(
-			taskList.map((task) => (task.id === updatedTask.id ? updatedTask : task))
-		);
+		updateTask(updatedTask.id, updatedTask).then((res) => {
+			setTaskList(
+				taskList.map((task) =>
+					task.id === updatedTask.id ? updatedTask : task
+				)
+			);
+		});
 	};
 
 	const deleteHandler = (deletedTask) => {
