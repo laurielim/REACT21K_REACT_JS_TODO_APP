@@ -6,14 +6,19 @@
       "isDone": false
     },
     {
-      "id": 2,
-      "name": "Grocery",
-      "isDone": true
+      "name": "Running",
+      "isDone": false,
+      "id": 5
     },
     {
-      "name": "Gym",
+      "name": "Bouldering",
       "isDone": false,
-      "id": 4
+      "id": 6
+    },
+    {
+      "name": "Grocery shopping",
+      "isDone": false,
+      "id": 7
     }
   ]
 }

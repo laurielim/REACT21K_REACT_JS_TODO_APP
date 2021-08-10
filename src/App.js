@@ -46,6 +46,13 @@ function App() {
 	};
 
 	const deleteHandler = (deletedTask) => {
+		if (!deletedTask.isDone) {
+			const response = window.confirm(
+				"Are you sure you want to delete this task?"
+			);
+			if (!response) return;
+		}
+
 		deleteTask(deletedTask.id);
 		setTaskList(taskList.filter((task) => task.id !== deletedTask.id));
 	};
