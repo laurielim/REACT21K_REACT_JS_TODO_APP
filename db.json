@@ -1,0 +1,19 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "name": "Laundry",
+      "isDone": false
+    },
+    {
+      "id": 2,
+      "name": "Grocery",
+      "isDone": true
+    },
+    {
+      "name": "Gym",
+      "isDone": false,
+      "id": 4
+    }
+  ]
+}

@@ -3,7 +3,7 @@ import React from "react";
 const Header = ({ todo, done }) => {
 	return (
 		<header>
-			<h1>To Do App</h1>
+			<h1>My To Do List</h1>
 			<p>
 				I currently have <span className='hightlight'>{todo}</span> tasks to do{" "}
 				{" - "}

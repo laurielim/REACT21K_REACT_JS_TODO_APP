@@ -1,49 +1,43 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 
 import "./App.css";
+
+import { getAllTasks, addTask, deleteTask } from "./services/taskService";
+
 import Header from "./components/Header";
 import TaskList from "./components/TaskList";
 import TaskInput from "./components/TaskInput";
 import Footer from "./components/Footer";
 
 function App() {
-	// const [taskList, setTaskList] = useState([])
-	const [taskList, setTaskList] = useState([
-		{
-			id: 1,
-			name: "Laundry",
-			isDone: false,
-		},
-		{
-			id: 2,
-			name: "Grocery",
-			isDone: true,
-		},
-		{
-			id: 3,
-			name: "Dishes",
-			isDone: false,
-		},
-	]); // dev only
+	const [taskList, setTaskList] = useState([]);
+
+	useEffect(() => {
+		getAllTasks().then((res) => setTaskList(res));
+	}, []);
 
 	const newTask = useRef();
 
 	const submitHandler = (e) => {
 		e.preventDefault();
 
-		if (!newTask.current.value) return;
+		if (!newTask.current.value) {
+			alert("No task added");
+			return;
+		}
 
-		const newTaskId = taskList.length + 1; // dev only
 		const task = {
-			id: newTaskId,
 			name: newTask.current.value,
 			isDone: false,
 		};
-		setTaskList([...taskList, task]);
-		newTask.current.value = "";
+		addTask(task).then((res) => {
+			console.log(res);
+			setTaskList([...taskList, res]);
+			newTask.current.value = "";
+		});
 	};
 
-	const checkHandler = (task) => {
+	const checkboxHandler = (task) => {
 		const updatedTask = { ...task };
 		updatedTask.isDone = updatedTask.isDone ? false : true;
 		setTaskList(
@@ -51,8 +45,10 @@ function App() {
 		);
 	};
 
-	const deleteHandler = (deletedTask) =>
+	const deleteHandler = (deletedTask) => {
+		deleteTask(deletedTask.id);
 		setTaskList(taskList.filter((task) => task.id !== deletedTask.id));
+	};
 
 	const tasksToDo = taskList.filter((task) => !task.isDone).length;
 	const percentDone = (
@@ -66,7 +62,7 @@ function App() {
 			<main>
 				<TaskList
 					taskList={taskList}
-					checkHandler={checkHandler}
+					checkboxHandler={checkboxHandler}
 					deleteHandler={deleteHandler}
 				/>
 				<TaskInput newTask={newTask} submitHandler={submitHandler} />
