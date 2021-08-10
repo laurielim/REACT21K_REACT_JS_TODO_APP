@@ -4,7 +4,7 @@ This React App was the first task of the React and Redux advanced course as part
 
 The design is inspired from the Microsoft To Do app I have on my laptop.
 
-<img src="./screenshots/microsoft_to_do.png" width="350" alt="Screenshot of the Microsoft To Do app">
+![Screenshot of the Microsoft To Do app](./screenshots/microsoft_to_do.png)
 
 ## Technologies used
 
@@ -30,7 +30,7 @@ npm install --save @fortawesome/react-fontawesome
 
 ## Screenshot
 
-<img src="./screenshots/my_to_do_app.png" width="350" alt="Screenshot of my To Do app">
+![Screenshot of my To Do app](./screenshots/my_to_do_app.png)
 
 ## Acknowledgment
 
