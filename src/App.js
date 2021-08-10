@@ -30,6 +30,9 @@ function App() {
 
 	const submitHandler = (e) => {
 		e.preventDefault();
+
+		if (!newTask.current.value) return;
+
 		const newTaskId = taskList.length + 1; // dev only
 		const task = {
 			id: newTaskId,

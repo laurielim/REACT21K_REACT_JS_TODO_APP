@@ -2,8 +2,10 @@
 	--color-mode: "light";
 	--color-dark: #211e1c;
 	--color-light: #f8f6f1;
+	--task-background-dark: #585350;
 	--background: #f8f6f1;
 	--text-color: #211e1c;
+	--task-background: #cfc7b4;
 	--accent-color-light: #a00000;
 	--accent-color-dark: #e3b74f;
 	--accent-color: var(--accent-color-light);
@@ -43,6 +45,7 @@ body {
 		--text-color: var(--color-light);
 		--accent-color: var(--accent-color-dark);
 		--banner-image-source: var(--banner-image-dark);
+		--task-background: var(--task-background-dark);
 	}
 }
 
@@ -51,6 +54,7 @@ body {
 	--text-color: var(--color-light);
 	--accent-color: var(--accent-color-dark);
 	--banner-image-source: var(--banner-image-dark);
+	--task-background: var(--task-background-dark);
 }
 
 /* Remove _all_ animations and transitions for people that prefer not to see them */
@@ -124,10 +128,22 @@ main * + * {
 }
 
 .task-container {
-	background-color: #303030;
-	margin-top: 0.2rem;
-	padding: 0.2rem 0.5rem;
+	background-color: var(--task-background);
+	margin-top: 0.3rem;
+	padding: 0.5rem 1rem;
 	position: relative;
+}
+
+.task-btn {
+	background-color: inherit;
+	border: none;
+	color: inherit;
+	font-size: inherit;
+	margin-top: 0;
+	position: absolute;
+	right: 0.5rem;
+	top: 50%;
+	transform: translateY(-50%);
 }
 
 input[type="checkbox"] {
@@ -136,6 +152,10 @@ input[type="checkbox"] {
 
 .task {
 	width: 100%;
+}
+
+.task:hover {
+	opacity: 0.6;
 }
 
 .task::before {
@@ -147,29 +167,56 @@ input[type="checkbox"] {
 }
 
 .task-done {
-	color: #aaa;
+	opacity: 0.6;
 	text-decoration: line-through;
 }
 
-.task-btn-delete {
-	margin-top: 0;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 0.5rem;
+input[type="text"] {
+	background-color: var(--task-background);
+	border: none;
+	border-bottom: 3px dashed transparent;
+	font-size: inherit;
+	color: inherit;
+	width: 95%;
 }
+
+input[type="text"]:focus {
+	outline: none;
+	border-color: var(--text-color);
+}
+
+::placeholder {
+	/* Chrome, Firefox, Opera, Safari 10.1+ */
+	color: inherit;
+	opacity: 1; /* Firefox */
+}
+
+:-ms-input-placeholder {
+	/* Internet Explorer 10-11 */
+	color: inherit;
+}
+
+::-ms-input-placeholder {
+	/* Microsoft Edge */
+	color: inherit;
+}
+
+input[type="text"]:focus::placeholder,
+input[type="text"]:hover::placeholder {
+	opacity: 0.6;
+}
+
 /******************** Footer ********************/
 
 footer {
+	background-color: var(--background);
 	bottom: 0;
 	display: flex;
 	flex-wrap: wrap;
 	height: 1.5rem; /* Footer height */
-	justify-content: center;
-	margin-bottom: 1rem;
-	position: absolute;
+	padding-bottom: 2rem;
+	position: fixed;
 	max-width: 960px;
-	width: 98%;
 }
 
 footer div:first-child {
@@ -181,4 +228,10 @@ footer div:first-child {
 footer div:last-child {
 	padding-left: 1rem;
 	margin-bottom: 0;
+}
+
+@media (max-width: 960px) {
+	.page-wrapper {
+		padding: 0 1rem;
+	}
 }

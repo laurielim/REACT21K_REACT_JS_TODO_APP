@@ -1,4 +1,6 @@
 import React from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 const Task = ({ task, checkHandler, deleteHandler }) => {
 	const taskId = `taskCheck_${task.id}`;
@@ -17,11 +19,11 @@ const Task = ({ task, checkHandler, deleteHandler }) => {
 				{task.name}
 			</label>
 			<button
-				className='task-btn-delete'
+				className='task-btn'
 				aria-label={ariaLabel}
 				onClick={() => deleteHandler(task)}
 			>
-				Delete
+				<FontAwesomeIcon icon={faTrash} />
 			</button>
 		</li>
 	);
