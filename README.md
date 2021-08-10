@@ -2,6 +2,10 @@
 
 This React App was the first task of the React and Redux advanced course as part of the Full Stack Web Development Program at [Business College Helsinki](https://en.bc.fi/qualifications/full-stack-web-developer-program/).
 
+The design is based off the Microsoft To Do app I have on my laptop.
+
+<img src="./screenshots/microsoft_to_do.png" width="350" alt="Screenshot of the Microsoft To Do app">
+
 ## Technologies used
 
 Built with:
