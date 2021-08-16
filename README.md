@@ -1,6 +1,6 @@
 # To Do App
 
-This React App was the first task of the React and Redux advanced course as part of the Full Stack Web Development Program at [Business College Helsinki](https://en.bc.fi/qualifications/full-stack-web-developer-program/).
+This React App was the first task of the React and Redux advanced course as part of the Full Stack Web Development Program at [Business College Helsinki](https://en.bc.fi/qualifications/full-stack-web-developer-program/). [Here's a live demo of the React only version](http://reacttodoapp-env.eba-pt3w52ga.eu-north-1.elasticbeanstalk.com/) which is hosted on AWS elastic Beanstalk.
 
 The design is inspired from the Microsoft To Do app I have on my laptop.
 
