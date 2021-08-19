@@ -58,7 +58,7 @@ function App() {
 	const percentDone = (
 		((taskList.length - tasksToDo) / taskList.length) *
 		100
-	).toFixed(2);
+	).toFixed(0);
 
 	return (
 		<div className='page-wrapper'>
